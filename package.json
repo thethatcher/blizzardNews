@@ -3,14 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.12.6",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.15"
+    "react-scripts": "1.0.15",
+    "request": "^2.83.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thethatcher/blizzardNews.git"
+  },
+  "author": "Ryan Thatcher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thethatcher/blizzardNews/issues"
+  },
+  "homepage": "https://github.com/thethatcher/blizzardNews#readme"
 }
