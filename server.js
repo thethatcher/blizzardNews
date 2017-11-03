@@ -139,4 +139,30 @@ app.post("/articles/:id", function(req, res) {
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
+  axios.get("https://news.blizzard.com/en-us/").then(function(response) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(response.data);
+    // Now, we grab every h2 within an article tag, and do the following:
+    $("div .ArticleListItem").each(function(i, element) {
+      // Save an empty result object
+      var result = {};
+      // Add the text and href of every link, and save them as properties of the result object
+      result.title = $(this).find(".ArticleListItem-title").text();
+      result.link = "https://news.blizzard.com" + $(this).find("a").attr("href");
+      result.game = $(this).find(".ArticleListItem-labelInner").text();
+      result.description = $(this).find(".ArticleListItem-description").text();  
+
+      // Create a new Article using the `result` object built from scraping
+      db.Article
+        .create(result)
+        .then(function(dbArticle) {
+          // If we were able to successfully scrape and save an Article, send a message to the client
+          res.send("Scrape Complete");
+        })
+        .catch(function(err) {
+          // If an error occurred, send it to the client
+          res.json(err);
+        });
+    });
+  });
 });
