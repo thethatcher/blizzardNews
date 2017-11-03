@@ -3,6 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  onMount(){
+    db.Article.create({
+    title:"test",
+    link: "testing.html",
+    game: "Overwatch",
+    description: "testing this a lot",
+    note:["first note"]
+
+  }).then(alert("article created?"));
+  }
   render() {
     return (
       <div className="App">
