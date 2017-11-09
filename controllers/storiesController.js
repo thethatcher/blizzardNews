@@ -7,13 +7,14 @@ module.exports = {
   findAll: function(req, res) {
     db.Story
       .find(req.query)
+      .sort({article_id: -1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
     db.Story
       .findById(req.params.id)
-      .populate("comment")
+      .populate("note")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

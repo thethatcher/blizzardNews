@@ -23,5 +23,8 @@ export default {
   },
   scrape: function(){
     return axios.get("api/scrape");
+  },
+  addComment: function(commentData, articleId){
+    return axios.post("api/stories/" + articleId, commentData);
   }
 };
